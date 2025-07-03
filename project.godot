@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="threllix"
+run/main_scene="uid://f544tlbokj5m"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
