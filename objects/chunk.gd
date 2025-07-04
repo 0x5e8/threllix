@@ -1,26 +1,22 @@
 @tool
+class_name Chunk
 extends StaticBody3D
 
-const size := 256.0
+var size: float = 256.0:
+	set(new):
+		size = new
+		update_pos()
+@export var chunk_position: Vector2i:
+	set(new):
+		chunk_position = new
+		update_pos()
 
-@export_range(1, 256, 1) var resolution := 4:
-	set(new_res):
-		resolution = new_res
-		update_mesh()
+func update_pos():
+	var flat_pos = chunk_position * size
+	position.x = flat_pos.x
+	position.z = flat_pos.y
 
-@export var amplitude: float = 5.3:
-	set(new_amp):
-		amplitude = new_amp
-		update_mesh()
-
-@export var terrain_function: TerrainFunction:
-	set(new_func):
-		terrain_function = new_func
-		update_mesh()
-		if terrain_function:
-			terrain_function.function_changed.connect(update_mesh)
-
-func update_mesh() -> void:
+func update_mesh(resolution: int, amplitude: float, terrain_function: TerrainFunction) -> void:
 	var plane := PlaneMesh.new()
 	plane.subdivide_width = resolution
 	plane.subdivide_depth = resolution
@@ -36,8 +32,8 @@ func update_mesh() -> void:
 		var normal := Vector3.UP
 		var tangent := Vector3.RIGHT
 		if terrain_function:
-			vertex.y = terrain_function.get_height(vertex.x, vertex.z) * amplitude
-			normal = terrain_function.get_normal(vertex.x, vertex.z)
+			vertex.y = terrain_function.get_height(vertex.x + position.x, vertex.z + position.z) * amplitude
+			normal = terrain_function.get_normal(vertex.x + position.x, vertex.z + position.z)
 			tangent = normal.cross(Vector3.UP)
 		vertex_array[i] = vertex
 		normal_array[i] = normal
@@ -47,6 +43,5 @@ func update_mesh() -> void:
 	
 	var array_mesh := ArrayMesh.new()
 	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, plane_arrays)
-	$mesh.mesh = array_mesh
-	
-	$collision.shape = array_mesh.create_trimesh_shape()
+	%mesh.mesh = array_mesh
+	%collision.shape = array_mesh.create_trimesh_shape()
