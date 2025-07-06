@@ -2,8 +2,6 @@
 class_name TerrainFunction
 extends Resource
 
-signal function_changed
-
 const EPSILON := 0.0001
 
 func get_height(x: float, y: float) -> float:

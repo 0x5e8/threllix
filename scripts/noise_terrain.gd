@@ -6,7 +6,7 @@ extends TerrainFunction
 	set(new):
 		noise = new
 		if noise:
-			noise.changed.connect(function_changed.emit)
+			noise.changed.connect(changed.emit)
 
 func get_height(x: float, y: float) -> float:
 	return noise.get_noise_2d(x, y)
