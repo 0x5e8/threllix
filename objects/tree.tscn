@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://csuypms73cdqp"]
+
+[node name="Tree" type="CSGCombiner3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.164785, 1.5, 0)
+height = 3.0
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.834848, -0.550481, 0, 0.550481, 0.834848, 0, 0, 0, 1, -1.04164, 4.21511, 0)
+height = 2.968
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.965899, 0.25892, 0, -0.258568, 0.964585, -0.0521442, -0.0135012, 0.050366, 0.99864, 0.338969, 4.6992, 0.089366)
+height = 3.865
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.836652, 5.47382, 0.887715)
+radius = 1.52732
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01294, 7.21093, 0)
+radius = 3.117
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.504319, 8.74103, 1.44134)
+radius = 3.117
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0484121, 7.21093, -1.37785)
+radius = 2.362

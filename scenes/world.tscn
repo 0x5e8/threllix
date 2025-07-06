@@ -33,14 +33,13 @@ sky = SubResource("Sky_nnsk1")
 [node name="world" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_k0juu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13156, 3.29639, 8.89593)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.296, 0)
 
 [node name="GameController" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("1_4wyf3")
 player = NodePath("../Player")
 render_distance = 5
 chunk_size = 64.0
-chunk_resolution = 8
 chunk_amplitude = 50.0
 terrain_function = SubResource("Resource_k0juu")
 
