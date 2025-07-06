@@ -22,6 +22,8 @@ func update_mesh(resolution: int, amplitude: float, terrain_function: TerrainFun
 	plane.subdivide_depth = resolution
 	plane.size = Vector2(size, size)
 	
+	var epsilon := size / float(resolution)
+	
 	var plane_arrays := plane.get_mesh_arrays()
 	var vertex_array: PackedVector3Array = plane_arrays[ArrayMesh.ARRAY_VERTEX]
 	var normal_array: PackedVector3Array = plane_arrays[ArrayMesh.ARRAY_NORMAL]
@@ -33,7 +35,7 @@ func update_mesh(resolution: int, amplitude: float, terrain_function: TerrainFun
 		var tangent := Vector3.RIGHT
 		if terrain_function:
 			vertex.y = terrain_function.get_height(vertex.x + position.x, vertex.z + position.z) * amplitude
-			normal = terrain_function.get_normal(vertex.x + position.x, vertex.z + position.z)
+			normal = terrain_function.get_normal(vertex.x + position.x, vertex.z + position.z, amplitude, epsilon)
 			tangent = normal.cross(Vector3.UP)
 		vertex_array[i] = vertex
 		normal_array[i] = normal
